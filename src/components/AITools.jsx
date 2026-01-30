@@ -291,11 +291,11 @@ const AITools = () => {
       </div>
 
       {/* 工具卡片列表 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 w-full">
         {(showFavorites ? favorites : filteredTools).map((tool) => (
-          <div key={tool.id} className="card rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <div className="mb-4 flex justify-between items-start">
-              <span className="inline-block px-2 sm:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium mb-3 sm:mb-4">
+          <div key={tool.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-5 flex flex-col">
+            <div className="mb-3 flex justify-between items-start">
+              <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
                 {getCategoryDisplayName(tool.category)}
               </span>
               <button
@@ -310,19 +310,19 @@ const AITools = () => {
                 {isFavorite(tool.id) ? '❤️' : '🤍'}
               </button>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">{tool.name}</h3>
-            <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed">{tool.description}</p>
-            <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
-              {tool.tags.map((tag, index) => (
+            <h3 className="text-lg font-bold text-gray-900 mb-3">{tool.name}</h3>
+            <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-grow">{tool.description}</p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {tool.tags.slice(0, 3).map((tag, index) => (
                 <span
                   key={index}
-                  className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-2 sm:px-3 py-1 rounded-full text-xs font-medium"
+                  className="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium"
                 >
                   {tag}
                 </span>
               ))}
             </div>
-            <a href={tool.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300">
+            <a href={tool.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300 text-sm mt-auto">
               访问链接
               <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
