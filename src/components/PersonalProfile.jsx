@@ -7,10 +7,10 @@ const PersonalProfile = () => {
       <div className="card rounded-xl">
         <div className="flex flex-col md:flex-row items-center">
           <div className="w-32 sm:w-40 h-32 sm:h-40 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mb-6 sm:mb-8 md:mb-0 md:mr-8 sm:md:mr-12 shadow-lg">
-            <span className="text-4xl sm:text-5xl text-white font-bold">头像</span>
+            <span className="text-4xl sm:text-5xl text-white font-bold">ZM</span>
           </div>
           <div className="text-center md:text-left max-w-2xl">
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">姓名</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">张小明</h3>
             <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6">AI技术爱好者 | 全栈开发者 | UI/UX设计师</p>
             <p className="text-gray-700 mb-6 sm:mb-8 leading-relaxed">
               热爱AI技术，专注于AI工具的收集和分享，希望通过这个网站帮助更多人发现和使用优质的AI工具。
@@ -29,10 +29,10 @@ const PersonalProfile = () => {
             
             {/* 社交媒体链接 */}
             <div className="flex justify-center md:justify-start space-x-4 sm:space-x-6">
-              <a href="#" className="social-link">GitHub</a>
-              <a href="#" className="social-link">LinkedIn</a>
-              <a href="#" className="social-link">X</a>
-              <a href="#" className="social-link">Email</a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">GitHub</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="social-link">X</a>
+              <a href="mailto:example@email.com" className="social-link">Email</a>
             </div>
           </div>
         </div>

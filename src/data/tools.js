@@ -71,6 +71,94 @@ export const tools = [
     category: "research",
     tags: ["AI", "研究", "学术"],
     url: "https://www.researchrabbit.ai"
+  },
+  {
+    id: 10,
+    name: "Perplexity AI",
+    description: "AI驱动的搜索引擎，可以提供更准确、更详细的搜索结果。",
+    category: "research",
+    tags: ["AI", "搜索", "研究"],
+    url: "https://www.perplexity.ai"
+  },
+  {
+    id: 11,
+    name: "Canva AI",
+    description: "Canva集成的AI设计工具，可以帮助你创建各种设计作品。",
+    category: "design",
+    tags: ["AI", "设计", "图形设计"],
+    url: "https://www.canva.com/ai"
+  },
+  {
+    id: 12,
+    name: "Replit AI",
+    description: "Replit的AI编程助手，可以帮助你编写、调试和优化代码。",
+    category: "programming",
+    tags: ["AI", "编程", "开发工具"],
+    url: "https://replit.com/ai"
+  },
+  {
+    id: 13,
+    name: "Jasper",
+    description: "AI内容生成工具，专为营销和商业内容创建而设计。",
+    category: "writing",
+    tags: ["AI", "写作", "营销"],
+    url: "https://www.jasper.ai"
+  },
+  {
+    id: 14,
+    name: "Stable Diffusion",
+    description: "开源的AI图像生成模型，可以创建各种风格的图像。",
+    category: "design",
+    tags: ["AI", "设计", "图像生成"],
+    url: "https://stability.ai/stable-diffusion"
+  },
+  {
+    id: 15,
+    name: "Llama 3",
+    description: "Meta开发的开源大语言模型，可用于各种AI任务。",
+    category: "all",
+    tags: ["AI", "开源", "大语言模型"],
+    url: "https://ai.meta.com/llama/"
+  },
+  {
+    id: 16,
+    name: "DeepSeek",
+    description: "深度求索开发的AI编程助手，专注于代码理解和生成。",
+    category: "programming",
+    tags: ["AI", "编程", "开发工具"],
+    url: "https://www.deepseek.com"
+  },
+  {
+    id: 17,
+    name: "Zapier AI",
+    description: "Zapier集成的AI自动化工具，可以帮助你创建智能工作流。",
+    category: "all",
+    tags: ["AI", "自动化", "生产力"],
+    url: "https://zapier.com/ai"
+  },
+  {
+    id: 18,
+    name: "QuillBot",
+    description: "AI驱动的文本重写工具，可以帮助你改进写作和避免 plagiarism。",
+    category: "writing",
+    tags: ["AI", "写作", "文本重写"],
+    url: "https://quillbot.com"
+  },
+  {
+    id: 19,
+    name: "Wolfram Alpha",
+    description: "AI驱动的计算知识引擎，可以回答各种科学和数学问题。",
+    category: "research",
+    tags: ["AI", "计算", "研究"],
+    url: "https://www.wolframalpha.com"
+  },
+  {
+    id: 20,
+    name: "ElevenLabs",
+    description: "AI语音生成工具，可以创建逼真的语音内容。",
+    category: "design",
+    tags: ["AI", "语音", "设计"],
+    url: "https://elevenlabs.io"
   }
 ];
 

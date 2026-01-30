@@ -1,7 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Navbar = ({ isDarkMode, setIsDarkMode, isMobileMenuOpen, setIsMobileMenuOpen, isScrolled }) => {
+const Navbar = ({ 
+  isDarkMode, 
+  setIsDarkMode, 
+  isMobileMenuOpen, 
+  setIsMobileMenuOpen, 
+  isScrolled, 
+  showShareModal = false, 
+  setShowShareModal = () => {}
+}) => {
   return (
     <nav className={`bg-white shadow-md fixed top-4 left-4 right-4 rounded-xl z-50 transition-all duration-300 ${
       isScrolled ? 'scrolled' : ''
@@ -18,6 +26,13 @@ const Navbar = ({ isDarkMode, setIsDarkMode, isMobileMenuOpen, setIsMobileMenuOp
             <a href="#tools" className="nav-link text-base font-medium">AI工具</a>
             <a href="#contact" className="nav-link text-base font-medium">联系我</a>
             <button
+              onClick={() => setShowShareModal(true)}
+              className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
+              aria-label="分享网站"
+            >
+              📤
+            </button>
+            <button
               onClick={() => setIsDarkMode(!isDarkMode)}
               className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
               aria-label={isDarkMode ? '切换到浅色模式' : '切换到深色模式'}
@@ -28,6 +43,13 @@ const Navbar = ({ isDarkMode, setIsDarkMode, isMobileMenuOpen, setIsMobileMenuOp
           
           {/* 移动导航 */}
           <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setShowShareModal(true)}
+              className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300 mr-2"
+              aria-label="分享网站"
+            >
+              📤
+            </button>
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
               className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300 mr-2"
@@ -51,6 +73,15 @@ const Navbar = ({ isDarkMode, setIsDarkMode, isMobileMenuOpen, setIsMobileMenuOp
             <a href="#personal" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>个人简介</a>
             <a href="#tools" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>AI工具</a>
             <a href="#contact" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>联系我</a>
+            <button 
+              className="block nav-link text-base font-medium py-2" 
+              onClick={() => {
+                setShowShareModal(true);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              分享网站
+            </button>
           </div>
         )}
       </div>
@@ -63,7 +94,9 @@ Navbar.propTypes = {
   setIsDarkMode: PropTypes.func.isRequired,
   isMobileMenuOpen: PropTypes.bool.isRequired,
   setIsMobileMenuOpen: PropTypes.func.isRequired,
-  isScrolled: PropTypes.bool.isRequired
+  isScrolled: PropTypes.bool.isRequired,
+  showShareModal: PropTypes.bool,
+  setShowShareModal: PropTypes.func
 }
 
 export default Navbar
