@@ -11,7 +11,10 @@ export default defineConfig({
     // 确保资源文件名包含哈希，避免缓存问题
     rollupOptions: {
       output: {
-        manualChunks: undefined  // 单页应用无需代码分割
+        manualChunks: undefined,  // 单页应用无需代码分割
+        entryFileNames: '[name]-[hash].js',
+        chunkFileNames: '[name]-[hash].js',
+        assetFileNames: '[name]-[hash].[ext]'
       }
     }
   }
