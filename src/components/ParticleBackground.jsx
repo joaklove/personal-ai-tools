@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Particles } from '@tsparticles/react';
 
 const ParticleBackground = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -21,95 +20,69 @@ const ParticleBackground = () => {
     };
   }, []);
 
-  // 根据屏幕尺寸调整粒子参数
-  const particlesOptions = {
-    fullScreen: {
-      enable: true,
-      zIndex: 0
-    },
-    particles: {
-      number: {
-        value: isMobile ? 60 : 120,
-        density: {
-          enable: true,
-          value_area: isMobile ? 800 : 600
-        }
-      },
-      color: {
-        value: ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981']
-      },
-      shape: {
-        type: 'circle'
-      },
-      opacity: {
-        value: isMobile ? 0.6 : 0.8,
-        random: true,
-        animation: {
-          enable: true,
-          speed: 1.5,
-          minimumValue: 0.3
-        }
-      },
-      size: {
-        value: isMobile ? 3 : 5,
-        random: true,
-        animation: {
-          enable: true,
-          speed: 2,
-          minimumValue: isMobile ? 1 : 2
-        }
-      },
-      links: {
-        enable: !isMobile,
-        distance: 100,
-        color: ['#3b82f6', '#8b5cf6'],
-        opacity: 0.4,
-        width: 1.5
-      },
-      move: {
-        enable: true,
-        speed: isMobile ? 1 : 2,
-        direction: 'none',
-        random: true,
-        straight: false,
-        outMode: 'out',
-        bounce: false
-      }
-    },
-    interactivity: {
-      events: {
-        onHover: {
-          enable: !isMobile,
-          mode: 'grab'
-        },
-        onClick: {
-          enable: true,
-          mode: 'push'
-        },
-        resize: true
-      },
-      modes: {
-        grab: {
-          distance: 120,
-          links: {
-            opacity: 0.8,
-            width: 2
-          }
-        },
-        push: {
-          particles_nb: isMobile ? 4 : 8
-        }
-      }
-    },
-    detectRetina: true
+  // 生成粒子
+  const generateParticles = () => {
+    const particleCount = isMobile ? 20 : 40;
+    const particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      const size = Math.random() * 5 + (isMobile ? 1 : 2);
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const delay = Math.random() * 10;
+      const duration = Math.random() * 20 + 10;
+      const opacity = Math.random() * 0.5 + 0.3;
+      const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      particles.push(
+        <div
+          key={i}
+          className="absolute rounded-full animate-float"
+          style={{
+            width: `${size}px`,
+            height: `${size}px`,
+            left: `${left}%`,
+            top: `${top}%`,
+            backgroundColor: color,
+            opacity: opacity,
+            animationDelay: `${delay}s`,
+            animationDuration: `${duration}s`,
+            animationTimingFunction: 'linear',
+            animationIterationCount: 'infinite'
+          }}
+        />
+      );
+    }
+
+    return particles;
   };
 
   return (
-    <div className="fixed inset-0 z-0">
-      <Particles
-        id="tsparticles"
-        options={particlesOptions}
-      />
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0) translateX(0);
+          }
+          25% {
+            transform: translateY(-20px) translateX(10px);
+          }
+          50% {
+            transform: translateY(0) translateX(20px);
+          }
+          75% {
+            transform: translateY(20px) translateX(10px);
+          }
+          100% {
+            transform: translateY(0) translateX(0);
+          }
+        }
+        .animate-float {
+          animation-name: float;
+        }
+      `}</style>
+      {generateParticles()}
     </div>
   );
 };
