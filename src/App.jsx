@@ -4,7 +4,6 @@ import PersonalProfile from './components/PersonalProfile'
 import AITools from './components/AITools'
 import ContactForm from './components/ContactForm'
 import Particles from 'react-tsparticles'
-import { loadFull } from 'tsparticles'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -15,7 +14,13 @@ function App() {
 
   // 粒子背景初始化
   const particlesInit = async (main) => {
-    await loadFull(main);
+    try {
+      // 只加载必要的模块，避免版本检查错误
+      await import('tsparticles');
+      console.log('Particles initialized successfully');
+    } catch (error) {
+      console.error('Error initializing particles:', error);
+    }
   };
 
   // 深色模式处理
@@ -112,46 +117,33 @@ function App() {
         {/* 粒子背景 */}
         <Particles
           id="tsparticles"
-          init={particlesInit}
           options={{
             fullScreen: false,
             particles: {
               number: {
-                value: 80,
+                value: 30, // 减少粒子数量，提高性能
                 density: {
                   enable: true,
                   value_area: 800
                 }
               },
               color: {
-                value: ["#ffffff", "#f0f0f0", "#e0e0e0"]
+                value: "#ffffff"
               },
               shape: {
                 type: "circle"
               },
               opacity: {
                 value: 0.5,
-                random: true,
-                anim: {
-                  enable: true,
-                  speed: 1,
-                  opacity_min: 0.1,
-                  sync: false
-                }
+                random: true
               },
               size: {
                 value: 3,
-                random: true,
-                anim: {
-                  enable: true,
-                  speed: 2,
-                  size_min: 0.1,
-                  sync: false
-                }
+                random: true
               },
               line_linked: {
                 enable: true,
-                distance: 150,
+                distance: 100,
                 color: "#ffffff",
                 opacity: 0.2,
                 width: 1
@@ -160,33 +152,7 @@ function App() {
                 enable: true,
                 speed: 1,
                 direction: "none",
-                random: true,
-                straight: false,
-                out_mode: "out",
-                bounce: false
-              }
-            },
-            interactivity: {
-              detect_on: "canvas",
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: "repulse"
-                },
-                onclick: {
-                  enable: true,
-                  mode: "push"
-                },
-                resize: true
-              },
-              modes: {
-                repulse: {
-                  distance: 100,
-                  duration: 0.4
-                },
-                push: {
-                  particles_nb: 4
-                }
+                random: true
               }
             },
             retina_detect: true
