@@ -12,16 +12,15 @@ function App() {
   const [showShareModal, setShowShareModal] = useState(false);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
 
-  // 粒子背景初始化
-  const particlesInit = async (main) => {
-    try {
-      // 只加载必要的模块，避免版本检查错误
-      await import('tsparticles');
-      console.log('Particles initialized successfully');
-    } catch (error) {
-      console.error('Error initializing particles:', error);
-    }
-  };
+  // 粒子背景初始化函数已移除，避免tsparticles错误
+  // const particlesInit = async (main) => {
+  //   try {
+  //     await import('tsparticles');
+  //     console.log('Particles initialized successfully');
+  //   } catch (error) {
+  //     console.error('Error initializing particles:', error);
+  //   }
+  // };
 
   // 深色模式处理
   useEffect(() => {
