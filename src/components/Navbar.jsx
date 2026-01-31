@@ -24,7 +24,7 @@ const Navbar = ({
           
           {/* 桌面导航 */}
           <div className="hidden md:flex items-center space-x-6">
-            <a href="#personal" className="nav-link text-base font-medium">个人简介</a>
+            <a href="#profile-section" className="nav-link text-base font-medium">个人简介</a>
             <a href="#tools" className="nav-link text-base font-medium">AI工具</a>
             <a href="#contact" className="nav-link text-base font-medium">联系我</a>
             <button
@@ -72,7 +72,7 @@ const Navbar = ({
         {/* 移动菜单 */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 space-y-4">
-            <a href="#personal" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>个人简介</a>
+            <a href="#profile-section" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>个人简介</a>
             <a href="#tools" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>AI工具</a>
             <a href="#contact" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>联系我</a>
             <button 
