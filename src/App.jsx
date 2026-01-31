@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import PersonalProfile from './components/PersonalProfile'
 import AITools from './components/AITools'
 import ContactForm from './components/ContactForm'
-import Particles from 'react-tsparticles'
+// import Particles from 'react-tsparticles'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -114,7 +114,8 @@ function App() {
 
       {/* 头部区域 */}
       <header className="pt-28 pb-16 sm:pt-32 sm:pb-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white relative overflow-hidden">
-        {/* 粒子背景 */}
+        {/* 粒子背景已临时移除，避免初始化错误 */}
+        {/* 
         <Particles
           id="tsparticles"
           options={{
@@ -163,9 +164,10 @@ function App() {
             left: 0,
             right: 0,
             bottom: 0,
-            zIndex: -1  /* 👈 这里一定要改成 -1，确保它永远在最底层 */
+            zIndex: -1
           }}
         />
+        */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">个人主页 + AI工具导航站</h1>
           <p className="text-base sm:text-lg lg:text-xl opacity-90 max-w-3xl mx-auto">发现最优质的AI工具，提升你的工作效率和创造力</p>
