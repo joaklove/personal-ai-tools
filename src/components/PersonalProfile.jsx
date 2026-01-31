@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import catAvatar from '../assets/cat-avatar.png';
  
  
- const PersonalProfile = () => {
+ const PersonalProfile = ({ className = '' }) => {
    const [isVisible, setIsVisible] = useState(false);
  
    // 简单的滚动监听，触发入场动画
@@ -22,7 +23,7 @@ import React, { useEffect, useState } from 'react';
    const skills = ['React', 'Tailwind', 'Node.js', 'Python', 'UI/UX Design', 'Prompt Engineering'];
  
    return (
-     <section id="profile-section" className="py-20 relative overflow-hidden">
+    <section id="profile-section" className={`py-20 relative overflow-hidden ${className}`}>
        <div className="container mx-auto px-6">
          <div className="flex flex-col md:flex-row items-center gap-12">
             
@@ -66,10 +67,11 @@ import React, { useEffect, useState } from 'react';
                {/* 头像容器 */}
                <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl transform transition-transform duration-500 group-hover:scale-105 group-hover:rotate-2">
                  <img  
-                   src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" // 这里使用示例头像，你可以换成你自己的图片
-                   alt="Profile"  
-                   className="w-full h-full object-cover bg-gray-100"
-                 />
+                  src={catAvatar} // 黑猫头像
+                  alt="Profile"  
+                  className="w-full h-full object-cover bg-gray-100"
+                  loading="lazy"
+                />
                  
                  {/* 悬停时的玻璃拟态遮罩 */}
                  <div className="absolute inset-0 bg-blue-600/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

@@ -19,14 +19,14 @@ const Navbar = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <a href="#" className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">个人主页</a>
+            <a href="#" className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">个人主页</a>
           </div>
           
           {/* 桌面导航 */}
-          <div className="hidden md:flex items-center space-x-6">
-            <a href="#profile-section" className="nav-link text-base font-medium">个人简介</a>
-            <a href="#tools" className="nav-link text-base font-medium">AI工具</a>
-            <a href="#contact" className="nav-link text-base font-medium">联系我</a>
+          <div className="hidden md:flex items-center space-x-4 sm:space-x-6">
+            <a href="#profile-section" className="nav-link text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-2 py-1" aria-label="跳转到个人简介部分">个人简介</a>
+            <a href="#tools" className="nav-link text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-2 py-1" aria-label="跳转到AI工具部分">AI工具</a>
+            <a href="#contact" className="nav-link text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-2 py-1" aria-label="跳转到联系我部分">联系我</a>
             <button
               onClick={() => setShowShareModal(true)}
               className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-110"
@@ -44,17 +44,17 @@ const Navbar = ({
           </div>
           
           {/* 移动导航 */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
             <button
               onClick={() => setShowShareModal(true)}
-              className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300 mr-2"
+              className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300"
               aria-label="分享网站"
             >
               📤
             </button>
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300 mr-2"
+              className="p-2 rounded-full hover:bg-gray-100 transition-all duration-300"
               aria-label={isDarkMode ? '切换到浅色模式' : '切换到深色模式'}
             >
               {isDarkMode ? '☀️' : '🌙'}
@@ -71,16 +71,18 @@ const Navbar = ({
         
         {/* 移动菜单 */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-4">
-            <a href="#profile-section" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>个人简介</a>
-            <a href="#tools" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>AI工具</a>
-            <a href="#contact" className="block nav-link text-base font-medium py-2" onClick={() => setIsMobileMenuOpen(false)}>联系我</a>
+          <div className="md:hidden py-4 space-y-3 bg-white dark:bg-gray-800 rounded-xl shadow-lg" role="menu" aria-label="移动导航菜单">
+            <a href="#profile-section" className="block nav-link text-base font-medium py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={() => setIsMobileMenuOpen(false)} role="menuitem" aria-label="跳转到个人简介部分">个人简介</a>
+            <a href="#tools" className="block nav-link text-base font-medium py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={() => setIsMobileMenuOpen(false)} role="menuitem" aria-label="跳转到AI工具部分">AI工具</a>
+            <a href="#contact" className="block nav-link text-base font-medium py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={() => setIsMobileMenuOpen(false)} role="menuitem" aria-label="跳转到联系我部分">联系我</a>
             <button 
-              className="block nav-link text-base font-medium py-2" 
+              className="w-full text-left nav-link text-base font-medium py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" 
               onClick={() => {
                 setShowShareModal(true);
                 setIsMobileMenuOpen(false);
               }}
+              role="menuitem"
+              aria-label="分享网站"
             >
               分享网站
             </button>

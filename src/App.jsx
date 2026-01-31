@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import PersonalProfile from './components/PersonalProfile'
 import AITools from './components/AITools'
 import ContactForm from './components/ContactForm'
-// import Particles from 'react-tsparticles'
+import ParticleBackground from './components/ParticleBackground'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -11,16 +11,6 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
-
-  // 粒子背景初始化函数已移除，避免tsparticles错误
-  // const particlesInit = async (main) => {
-  //   try {
-  //     await import('tsparticles');
-  //     console.log('Particles initialized successfully');
-  //   } catch (error) {
-  //     console.error('Error initializing particles:', error);
-  //   }
-  // };
 
   // 深色模式处理
   useEffect(() => {
@@ -100,6 +90,9 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* 粒子背景 */}
+      <ParticleBackground />
+      
       {/* 导航栏 */}
       <Navbar 
         isDarkMode={isDarkMode} 
@@ -112,71 +105,17 @@ function App() {
       />
 
       {/* 头部区域 */}
-      <header className="pt-28 pb-16 sm:pt-32 sm:pb-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white relative overflow-hidden">
-        {/* 粒子背景已临时移除，避免初始化错误 */}
-        {/* 
-        <Particles
-          id="tsparticles"
-          options={{
-            fullScreen: false,
-            particles: {
-              number: {
-                value: 30, // 减少粒子数量，提高性能
-                density: {
-                  enable: true,
-                  value_area: 800
-                }
-              },
-              color: {
-                value: "#ffffff"
-              },
-              shape: {
-                type: "circle"
-              },
-              opacity: {
-                value: 0.5,
-                random: true
-              },
-              size: {
-                value: 3,
-                random: true
-              },
-              line_linked: {
-                enable: true,
-                distance: 100,
-                color: "#ffffff",
-                opacity: 0.2,
-                width: 1
-              },
-              move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                random: true
-              }
-            },
-            retina_detect: true
-          }}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: -1
-          }}
-        />
-        */}
+      <header className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">个人主页 + AI工具导航站</h1>
-          <p className="text-base sm:text-lg lg:text-xl opacity-90 max-w-3xl mx-auto">发现最优质的AI工具，提升你的工作效率和创造力</p>
-          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#tools" className="inline-block bg-white text-blue-600 font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">个人主页 + AI工具导航站</h1>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl opacity-90 max-w-2xl sm:max-w-3xl mx-auto">发现最优质的AI工具，提升你的工作效率和创造力</p>
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            <a href="#tools" className="inline-block bg-white text-blue-600 font-semibold px-5 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               探索AI工具
             </a>
             <button 
               onClick={() => setShowShareModal(true)}
-              className="inline-block bg-blue-700 text-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20"
+              className="inline-block bg-blue-700 text-white font-semibold px-5 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20"
             >
               分享网站
             </button>
@@ -188,10 +127,10 @@ function App() {
       <main className="flex-1 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 个人简介区域 */}
-          <PersonalProfile />
+          <PersonalProfile className="mb-20" />
 
           {/* AI工具导航区域 */}
-          <AITools />
+          <AITools className="mb-20" />
 
           {/* 联系区域 */}
           <ContactForm />
