@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Particles, { initParticlesEngine } from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
+import { useEffect, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
-const ParticleBackground = () => {
+export default function ParticleBackground() {
+  const [engineReady, setEngineReady] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [init, setInit] = useState(false);
 
-  // 初始化粒子引擎
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
+    }).then(() => setEngineReady(true));
   }, []);
 
   // 检测屏幕尺寸
@@ -32,94 +29,83 @@ const ParticleBackground = () => {
     };
   }, []);
 
-  // 根据屏幕尺寸调整粒子参数
-  const particlesOptions = {
-    fullScreen: {
-      enable: true,
-      zIndex: 0
-    },
-    particles: {
-      number: {
-        value: isMobile ? 60 : 120,
-        density: {
-          enable: true,
-          value_area: isMobile ? 800 : 600
-        }
-      },
-      color: {
-        value: ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981']
-      },
-      shape: {
-        type: 'circle'
-      },
-      opacity: {
-        value: isMobile ? 0.6 : 0.8,
-        random: true,
-        animation: {
-          enable: true,
-          speed: 1.5,
-          minimumValue: 0.3
-        }
-      },
-      size: {
-        value: isMobile ? 3 : 5,
-        random: true,
-        animation: {
-          enable: true,
-          speed: 2,
-          minimumValue: isMobile ? 1 : 2
-        }
-      },
-      links: {
-        enable: !isMobile,
-        distance: 100,
-        color: ['#3b82f6', '#8b5cf6'],
-        opacity: 0.4,
-        width: 1.5
-      },
-      move: {
-        enable: true,
-        speed: isMobile ? 1 : 2,
-        direction: 'none',
-        random: true,
-        straight: false,
-        outMode: 'out',
-        bounce: false
-      }
-    },
-    interactivity: {
-      events: {
-        onHover: {
-          enable: !isMobile,
-          mode: 'grab'
-        },
-        onClick: {
-          enable: true,
-          mode: 'push'
-        },
-        resize: true
-      },
-      modes: {
-        grab: {
-          distance: 120,
-          links: {
-            opacity: 0.8,
-            width: 2
-          }
-        },
-        push: {
-          particles_nb: isMobile ? 4 : 8
-        }
-      }
-    },
-    detectRetina: true
-  };
+  if (!engineReady) return null;
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
-      {init && <Particles options={particlesOptions} />}
-    </div>
-  );
-};
+    <Particles
+      id="tsparticles"
+      options={{
+        background: { color: "#000000" },
+        fpsLimit: 120,
+        detectRetina: true,
 
-export default ParticleBackground;
+        particles: {
+          number: {
+            value: isMobile ? 100 : 220,
+            density: { enable: true, area: 900 },
+          },
+
+          // 🌌 星空粒子颜色（AI 科技蓝）
+          color: { value: ["#66ccff", "#99e0ff", "#ffffff"] },
+
+          // ✨ 星云光晕效果
+          opacity: {
+            value: 0.7,
+            random: true,
+            animation: {
+              enable: true,
+              speed: 0.4,
+              minimumValue: 0.2,
+            },
+          },
+
+          // 🌟 粒子大小
+          size: {
+            value: { min: 0.5, max: 3 },
+            animation: {
+              enable: true,
+              speed: 2,
+              minimumValue: 0.3,
+            },
+          },
+
+          // 🔗 AI 神经网络连线
+          links: {
+            enable: !isMobile,
+            distance: 160,
+            color: "#66ccff",
+            opacity: 0.35,
+            width: 1,
+          },
+
+          // 🌀 星轨运动（轻微旋转 + 漂移）
+          move: {
+            enable: true,
+            speed: isMobile ? 0.3 : 0.6,
+            direction: "none",
+            random: false,
+            straight: false,
+            outModes: "bounce",
+            attract: {
+              enable: true,
+              rotateX: 3000,
+              rotateY: 3000,
+            },
+          },
+        },
+
+        // 🖱️ 智能交互
+        interactivity: {
+          events: {
+            onHover: { enable: !isMobile, mode: "repulse" },
+            onClick: { enable: true, mode: "push" },
+          },
+          modes: {
+            repulse: { distance: 150, duration: 0.4 },
+            push: { quantity: isMobile ? 2 : 4 },
+          },
+        },
+      }}
+    />
+  );
+}
