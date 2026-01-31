@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { tools, categories, getCategoryDisplayName } from '../data/tools'
+import { Tilt } from 'react-tilt'
 
 const AITools = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -293,7 +294,19 @@ const AITools = () => {
       {/* 工具卡片列表 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 w-full">
         {(showFavorites ? favorites : filteredTools).map((tool) => (
-          <div key={tool.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-5 flex flex-col">
+          <Tilt 
+            key={tool.id}
+            options={{
+              max: 20,
+              perspective: 1000,
+              scale: 1,
+              speed: 300,
+              transition: true,
+              axis: null,
+              reset: true
+            }}
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-5 flex flex-col"
+          >
             <div className="mb-3 flex justify-between items-start">
               <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
                 {getCategoryDisplayName(tool.category)}
@@ -328,7 +341,7 @@ const AITools = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </a>
-          </div>
+          </Tilt>
         ))}
         
         {/* 无结果提示 */}

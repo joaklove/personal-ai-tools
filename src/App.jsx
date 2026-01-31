@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import PersonalProfile from './components/PersonalProfile'
 import AITools from './components/AITools'
 import ContactForm from './components/ContactForm'
+import Particles from 'react-tsparticles'
+import { loadFull } from 'tsparticles'
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -10,6 +12,11 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
+
+  // 粒子背景初始化
+  const particlesInit = async (main) => {
+    await loadFull(main);
+  };
 
   // 深色模式处理
   useEffect(() => {
@@ -101,8 +108,99 @@ function App() {
       />
 
       {/* 头部区域 */}
-      <header className="pt-28 pb-16 sm:pt-32 sm:pb-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <header className="pt-28 pb-16 sm:pt-32 sm:pb-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white relative overflow-hidden">
+        {/* 粒子背景 */}
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={{
+            fullScreen: false,
+            particles: {
+              number: {
+                value: 80,
+                density: {
+                  enable: true,
+                  value_area: 800
+                }
+              },
+              color: {
+                value: ["#ffffff", "#f0f0f0", "#e0e0e0"]
+              },
+              shape: {
+                type: "circle"
+              },
+              opacity: {
+                value: 0.5,
+                random: true,
+                anim: {
+                  enable: true,
+                  speed: 1,
+                  opacity_min: 0.1,
+                  sync: false
+                }
+              },
+              size: {
+                value: 3,
+                random: true,
+                anim: {
+                  enable: true,
+                  speed: 2,
+                  size_min: 0.1,
+                  sync: false
+                }
+              },
+              line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#ffffff",
+                opacity: 0.2,
+                width: 1
+              },
+              move: {
+                enable: true,
+                speed: 1,
+                direction: "none",
+                random: true,
+                straight: false,
+                out_mode: "out",
+                bounce: false
+              }
+            },
+            interactivity: {
+              detect_on: "canvas",
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: "repulse"
+                },
+                onclick: {
+                  enable: true,
+                  mode: "push"
+                },
+                resize: true
+              },
+              modes: {
+                repulse: {
+                  distance: 100,
+                  duration: 0.4
+                },
+                push: {
+                  particles_nb: 4
+                }
+              }
+            },
+            retina_detect: true
+          }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 0
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">个人主页 + AI工具导航站</h1>
           <p className="text-base sm:text-lg lg:text-xl opacity-90 max-w-3xl mx-auto">发现最优质的AI工具，提升你的工作效率和创造力</p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
@@ -159,8 +257,8 @@ function App() {
 
       {/* 分享模态框 */}
       {showShareModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 sm:p-8">
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white/80 backdrop-blur-xl rounded-xl shadow-2xl max-w-md w-full p-6 sm:p-8 border border-white/20">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900">分享网站</h3>
               <button 

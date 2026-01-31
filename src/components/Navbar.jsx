@@ -11,8 +11,10 @@ const Navbar = ({
   setShowShareModal = () => {}
 }) => {
   return (
-    <nav className={`bg-white shadow-md fixed top-4 left-4 right-4 rounded-xl z-50 transition-all duration-300 ${
-      isScrolled ? 'scrolled' : ''
+    <nav className={`fixed top-4 left-4 right-4 rounded-xl z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/80 backdrop-blur-xl shadow-lg' 
+        : 'bg-white/90 backdrop-blur-md shadow-md'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
