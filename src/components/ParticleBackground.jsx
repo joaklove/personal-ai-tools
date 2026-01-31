@@ -35,74 +35,90 @@ export default function ParticleBackground() {
     <Particles
       id="tsparticles"
       options={{
-        background: { color: "#000000" },
+        background: {
+          color: "#050a1a", // 深空蓝黑，突出量子光点
+        },
         fpsLimit: 120,
         detectRetina: true,
 
         particles: {
           number: {
-            value: isMobile ? 100 : 220,
+            value: isMobile ? 100 : 180,
             density: { enable: true, area: 900 },
           },
 
-          // 🌌 星空粒子颜色（AI 科技蓝）
-          color: { value: ["#66ccff", "#99e0ff", "#ffffff"] },
+          // ⚛️ 量子能量色
+          color: {
+            value: ["#ffffff", "#b8f3ff", "#7fd9ff", "#4fc3ff"],
+          },
 
-          // ✨ 星云光晕效果
+          // ✨ 量子闪烁（不规则闪烁）
           opacity: {
-            value: 0.7,
+            value: 1,
             random: true,
             animation: {
               enable: true,
-              speed: 0.4,
-              minimumValue: 0.2,
+              speed: 1.2,
+              minimumValue: 0.1,
+              sync: false,
             },
           },
 
-          // 🌟 粒子大小
+          // 🌟 粒子大小（带轻微呼吸感）
           size: {
-            value: { min: 0.5, max: 3 },
+            value: { min: 1, max: 3.5 },
             animation: {
               enable: true,
-              speed: 2,
-              minimumValue: 0.3,
+              speed: 3,
+              minimumValue: 0.5,
+              sync: false,
             },
           },
 
-          // 🔗 AI 神经网络连线
+          // ⚡ 量子跳跃（瞬移效果）
+          move: {
+            enable: true,
+            speed: isMobile ? 0.4 : 0.6,
+            direction: "none",
+            random: true,
+            straight: false,
+            outModes: {
+              default: "bounce",
+            },
+
+            // 关键：量子跳跃模拟
+            trail: {
+              enable: true,
+              length: 3,
+              fillColor: "#050a1a",
+            },
+
+            // 随机瞬移
+            warp: true,
+          },
+
+          // 🔗 量子态连线（更亮、更灵动）
           links: {
             enable: !isMobile,
             distance: 160,
-            color: "#66ccff",
-            opacity: 0.35,
-            width: 1,
-          },
-
-          // 🌀 星轨运动（轻微旋转 + 漂移）
-          move: {
-            enable: true,
-            speed: isMobile ? 0.3 : 0.6,
-            direction: "none",
-            random: false,
-            straight: false,
-            outModes: "bounce",
-            attract: {
-              enable: true,
-              rotateX: 3000,
-              rotateY: 3000,
-            },
+            color: "#7fd9ff",
+            opacity: 0.45,
+            width: 1.1,
           },
         },
 
-        // 🖱️ 智能交互
+        // 🖱️ 量子交互（靠近时粒子会“塌缩”）
         interactivity: {
           events: {
             onHover: { enable: !isMobile, mode: "repulse" },
             onClick: { enable: true, mode: "push" },
           },
           modes: {
-            repulse: { distance: 150, duration: 0.4 },
-            push: { quantity: isMobile ? 2 : 4 },
+            repulse: {
+              distance: 180,
+              duration: 0.3,
+            },
+            push: { quantity: isMobile ? 2 : 3 },
           },
         },
       }}
