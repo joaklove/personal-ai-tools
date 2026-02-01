@@ -1,34 +1,54 @@
-name: Deploy to GitHub Pages
+# 这里的名字可以随便起
+name: Deploy Vite App
 
 on:
+  # 监听 main 分支的 push 事件
   push:
-    branches:
-      - main  # 或者你的主分支名称
+    branches: ["main" ]
+  # 允许你手动点击按钮触发部署
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout 🛎️
         uses: actions/checkout@v4
-        with:
-          submodules: false  # 不检查子模块，避免'yunshu_skillshub'错误
 
-      - name: Set up Node.js
+      - name: Setup Node.js ⚙️
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install Dependencies 🔧
         run: npm install
 
-      - name: Build project
+      - name: Build App 🏗️
         run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        # 注意：Vite 默认打包到 dist 文件夹，如果你的配置不同，这里可能需要改
+        
+      - name: Upload Artifact 📤
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages  # 部署到gh-pages分支
+          path: ./dist # 👈 这里非常重要，告诉 GitHub 只上传打包好的 dist 文件夹
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4
