@@ -127,18 +127,24 @@ function App() {
       <main className="flex-1 py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 个人简介区域 */}
-          <PersonalProfile className="mb-20" />
+          <section id="profile-section" className="mb-20">
+            <PersonalProfile />
+          </section>
 
           {/* AI工具导航区域 */}
-          <AITools className="mb-20" />
+          <section id="tools" className="mb-20">
+            <AITools />
+          </section>
 
           {/* 联系区域 */}
-          <ContactForm />
+          <section id="contact">
+            <ContactForm />
+          </section>
         </div>
       </main>
 
       {/* 页脚 */}
-      <footer className="bg-gray-900 text-white py-8 sm:py-12">
+      <footer className="bg-gray-900 text-white py-8 sm:py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 sm:mb-6 md:mb-0">

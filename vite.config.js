@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/personal-ai-tools/', // GitHub Pages 仓库名
+  base: '/', // 根路径部署（Vercel）
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
