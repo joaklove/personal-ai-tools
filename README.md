@@ -170,6 +170,10 @@ MIT License
 - GitHub: [https://github.com/joaklove](https://github.com/joaklove)
 - Email: example@email.com
 
+## 更新日志
+- v1.0.0: 首次发布，部署 Vercel。
+- v1.0.1: 更新了网站标题。
+
 ---
 
 © 2026 个人主页 + AI工具导航站 | 版权所有
