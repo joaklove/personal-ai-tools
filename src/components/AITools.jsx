@@ -965,8 +965,8 @@ const AITools = ({ className = '' }) => {
         </div>
 
         {showRecommendationsModal && (
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 border border-white/20">
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 cursor-pointer" onClick={() => setShowRecommendationsModal(false)}>
+            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 border border-white/20 max-h-[90vh] overflow-y-auto cursor-default" onClick={(e) => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900">🤖 AI 工具推荐</h3>
                 <button onClick={() => setShowRecommendationsModal(false)} className="p-2 rounded-full hover:bg-gray-100 transition-colors">
@@ -1004,8 +1004,8 @@ const AITools = ({ className = '' }) => {
         )}
 
         {showEnhancedSearch && (
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 border border-white/20">
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 cursor-pointer" onClick={() => setShowEnhancedSearch(false)}>
+            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 border border-white/20 cursor-default" onClick={(e) => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900">🤖 AI 增强搜索</h3>
                 <button onClick={() => setShowEnhancedSearch(false)} className="p-2 rounded-full hover:bg-gray-100 transition-colors">
@@ -1078,8 +1078,8 @@ const AITools = ({ className = '' }) => {
         )}
 
         {showComparisonModal && (
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-3xl w-full p-6 sm:p-8 border border-white/20 max-h-[90vh] overflow-y-auto">
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 cursor-pointer" onClick={() => setShowComparisonModal(false)}>
+            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-3xl w-full p-6 sm:p-8 border border-white/20 max-h-[90vh] overflow-y-auto cursor-default" onClick={(e) => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900">🔄 AI 工具对比分析</h3>
                 <button onClick={() => setShowComparisonModal(false)} className="p-2 rounded-full hover:bg-gray-100 transition-colors">
@@ -1117,8 +1117,8 @@ const AITools = ({ className = '' }) => {
         )}
 
         {showAnalysisModal && (
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-3xl w-full p-6 sm:p-8 border border-white/20 max-h-[90vh] overflow-y-auto">
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 cursor-pointer" onClick={() => setShowAnalysisModal(false)}>
+            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-3xl w-full p-6 sm:p-8 border border-white/20 max-h-[90vh] overflow-y-auto cursor-default" onClick={(e) => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900">📊 AI 工具详细分析</h3>
                 <button onClick={() => setShowAnalysisModal(false)} className="p-2 rounded-full hover:bg-gray-100 transition-colors">
@@ -1163,8 +1163,8 @@ const AITools = ({ className = '' }) => {
         )}
 
         {showFeedbackModal && (
-          <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-md w-full p-6 sm:p-8 border border-white/20">
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 cursor-pointer" onClick={() => setShowFeedbackModal(false)}>
+            <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-2xl max-w-md w-full p-6 sm:p-8 border border-white/20 cursor-default" onClick={(e) => e.stopPropagation()}>
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-bold text-gray-900">📝 工具反馈</h3>
                 <button onClick={() => setShowFeedbackModal(false)} className="p-2 rounded-full hover:bg-gray-100 transition-colors">
